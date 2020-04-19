@@ -29,15 +29,14 @@
 </template>
 
 <script>
-import IngredientServices from "@/services/getIngredients"
-import recipesServices from "@/services/getrecipes"
+import getdataServices from "@/services/getDataServices"
 
 export default {
     
     data() {
         return {
             ingredients_list:[],
-            ingredient_data: IngredientServices.getAll().then(response => {
+            ingredient_data: getdataServices.getIngredients().then(response => {
                 this.ingredients_list = response.data;
                 console.log(response.data);
             }).catch(e => {
@@ -64,7 +63,7 @@ export default {
     methods:{
         
         retriveRecipe(){
-             recipesServices.get().then(response =>{
+             getdataServices.getRecipes().then(response =>{
                     this.recipes_list = response.data.id
                     console.log(response.data);
                 }).catch(e=>{
