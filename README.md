@@ -1,4 +1,4 @@
-# meal
+# Recipe Front End
 
 ## Project setup
 ```
