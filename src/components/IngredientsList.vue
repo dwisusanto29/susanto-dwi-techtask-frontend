@@ -19,16 +19,16 @@
              {{ category.title }}<br/>{{ category['use-by'] }}
              </b-form-checkbox>
          </div>
-
     </b-row>
     <label>{{ selectedData.item }}</label>
 
     <br/>
     <label>Name of Menu : </label>
         <b-row>
-            
-            <div v-if="resultsRecipe(recipe_list, selectedData.item)">
-                <label>{{resultsRecipe}}</label>
+            <div v-for="recipe_data in recipe_list" :key="recipe_data.id" >
+                <b-col>
+                {{recipe_data.title}}:{{ recipe_data.ingredients}}
+                </b-col>
             </div>
             
         </b-row>
@@ -80,6 +80,8 @@ export default {
 
 
     },
+
+    
     methods: {
         resultsRecipe(entry) {
             if(this.filter  !== "All"){
