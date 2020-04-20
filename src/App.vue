@@ -6,7 +6,8 @@
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="/ingredients">Ingredients</b-nav-item>
+          <!-- <b-nav-item href="/ingredients">Ingredients</b-nav-item>
+          -->
         </b-navbar-nav>
       </b-collapse>
       </b-navbar>
