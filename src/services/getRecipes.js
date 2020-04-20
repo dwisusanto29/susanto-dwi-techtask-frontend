@@ -2,7 +2,7 @@ import https from "../http-common";
 
 class ingredientsDataServices {
     getAll() {
-        return https.get("/ingredients");
+        return https.get("/recipes?ingredients=");
     }
 }
 

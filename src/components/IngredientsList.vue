@@ -22,6 +22,16 @@
 
     </b-row>
     <label>{{ selectedData.item }}</label>
+
+    <br/>
+    <label>Name of Menu : </label>
+        <b-row>
+            
+            <div v-if="resultsRecipe(recipe_list, selectedData.item)">
+                <label>{{resultsRecipe}}</label>
+            </div>
+            
+        </b-row>
     </b-container>
     
 </template>
@@ -29,6 +39,7 @@
 <script>
 
 import IngredientServices  from "../services/getIngredients"
+import recipeServices from "../services/getRecipes"
 
 export default {
     
@@ -45,7 +56,18 @@ export default {
             selectedIngredient: null,
             selectedData: {
                 item: []
-            }
+            },
+            recipe_list: [],
+            recipe_data: recipeServices .getAll().then(response => {
+                this.recipe_list = response.data;
+                console.log(response.data);
+            }).catch(e => {
+                console.log(e);
+            }),
+            filter: "All",
+            fkey: "ingredients",
+
+
         }
     },
     computed: {
@@ -54,9 +76,23 @@ export default {
             return this.ingredients_list;
         else
             return this.ingredients_list.filter ( p => p['use-by'] > this.tanggal);
+        },
 
+
+    },
+    methods: {
+        resultsRecipe(entry) {
+            if(this.filter  !== "All"){
+                if (this.recipe_list.fkey==this.filter){
+                    return entry;
+                } else {
+                    return entry;
+                }
+            }
         }
     }
+
+    
     
 }
 </script>
